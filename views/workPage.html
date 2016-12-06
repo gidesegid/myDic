@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<title>contact list</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+ 
+
+  <style type="text/css">
+    body{
+      margin:20px 30px;
+    }
+    div{
+      margin:50px 50px;
+      background-color: rgba(195, 102, 102, 0.67);
+    }
+  </style>
+</head>
+<body ng-controller="mycontroller" class="text-center">
+
+
+     <div class="row" id="loginId" ng-hide="userLogin" ng-show="userLogin">
+       
+       
+       
+        <label>User Name<input type="text" class="form-control" ng-model="userName"></label>
+        <label>Password<input type="password" ng-keypress="enter($event)" class="form-control" ng-model="password"></label>
+       
+        <label ng-model="id"></label>
+        <input type="submit" value="log in to add new words" class="btn btn-primary" ng-click="login()">
+        <input type="submit" value="log in to update from database" class="btn btn-primary" ng-click="loginUpdate()">
+
+        <p id="userinfo"></p>
+      </div>
+     
+      <div class="container" ng-hide="updatePage" ng-show="updatePage">
+        <div class="row">
+            <div>
+                 <label>English<input type="text" class="form-control" ng-model="engField"></label>  
+                 <label>Tigrigna<input type="text" class="form-control" ng-model="tigField"> </label>
+                 <input type="button" value="update" ng-click="update()" ng-model="updatebutton" class="btn btn-primary">
+                  <input type="button" value="Load Data" ng-click="LoadDataToUpdate()" ng-model="LoadDataToUpdate" class="btn btn-primary">
+                 <label ng-model="idOfEmpty"></label>
+                 <label ng-model="userId"></label>
+                 <label id="infoUpdate"></label>
+                 <label id="updatesuccess"></label>
+            </div>
+            <table class="table" >
+               <thead>
+                   <tr>
+                     <th>english</th>
+                     <th>tigrigna</th>
+                      <th>value</th>
+                   </tr>
+               </thead>
+               <tbody>
+                  <tr ng-repeat="words in dataToUpdate | filter:eng">
+                    <td><input type="button" class="btn btn-primary" ng-click="updateWord(words)" value="Translate {{words.word}} to tigrina">  {{words.word}}</td>
+                     <td>{{words.wordTig}}</td>
+                     <td>{{words.value}}</td>
+                  </tr>
+               </tbody>
+            </table>
+        </div>
+     </div>
+    <!--adding new word to dictionary-->
+    <div class="container" ng-hide="userPage" ng-show="userPage">
+        <div>
+             <label>english <input type="text" class="form-control" ng-model="eng"></label>
+             <label>tigrigna <input type="text" class="form-control" ng-model="tig"></label>
+             <input type="button" value="Add" class="btn btn-primary" ng-click="add()">
+             <input type="button" value="Refresh" class="btn btn-primary" ng-click="refresh()">
+             <label ng-model="id">{{}}</label>
+             <label id="addInfo"></label>
+        </div>
+        <table class="table">
+            <thead>
+              <tr>
+                <th>english</th>
+                 <th>tigrigna</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="words in newDataWords | filter:eng">
+                <td>{{words.english}}</a></td>
+                <td>{{words.tigrigna}}</td>
+                
+              </tr>
+            </tbody>
+        </table>
+    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script type="text/javascript">
+var myApp=angular.module('myApp',[]);
+myApp.controller('mycontroller',function($scope,$http,$window){
+//login
+$scope.userLogin=false;//user login visible
+$scope.userPage=true;//userPage invisible
+$scope.updatePage=true;//updatePage
+//on login button click
+  $scope.login=function(){
+           var username=$scope.userName;
+              var password=$scope.password;
+              if(username==null || password==null){
+                document.getElementById("userinfo").innerHTML="pls fill user name and password"
+              }else{
+            $http.get('/login/'+$scope.userName+'/'+$scope.password).success(function(response){
+              $scope.data=response;
+              var id=$scope.id;
+              var usernamefromdatabase=$scope.data[0].userName
+              var passwordfromdatabase=$scope.data[0].password
+              var id=$scope.data[0].id
+               $scope.id=$scope.data[0].id
+              $scope.userName=$scope.userName;
+              if(username==null || password==null){
+                document.getElementById("userinfo").innerHTML=" Please enter user name and password"
+              }
+              else if(username===usernamefromdatabase && password===passwordfromdatabase){
+                       $scope.userLogin=true;
+                       $scope.userPage=false;
+                       $scope.updatePage=true;
+              }else{
+                document.getElementById("userinfo").innerHTML="user name and password are mismatch"
+              }
+            })
+          }
+  }
+$scope.loginUpdate=function(){
+            var username=$scope.userName;
+            var password=$scope.password;
+           if(username==null || password==null){
+            document.getElementById("userinfo").innerHTML="please fill user name and password";
+           } else{
+            $http.get('/login/'+$scope.userName+'/'+$scope.password).success(function(response){
+              $scope.data=response;
+              var id=$scope.id;
+              var usernamefromdatabase=$scope.data[0].userName
+              var passwordfromdatabase=$scope.data[0].password
+              var id=$scope.data[0].id
+              $scope.id=$scope.data[0].id
+              console.log($scope.id)
+              $scope.userName=$scope.userName;
+              if(username==null || password==null){
+                document.getElementById("userinfo").innerHTML="enter user name and password"
+              }
+              else if(username===usernamefromdatabase && password===passwordfromdatabase){
+                       $scope.userLogin=true;
+                       $scope.userPage=true;
+                       $scope.updatePage=false;
+                       $scope.userId=$scope.id;
+              }else{
+                document.getElementById("userinfo").innerHTML="user name and password are mismatch"
+              }
+                  
+            })
+          }
+      }
+//user page
+$scope.refresh=function(){
+   $http.get('/getAllNewWords').success(function(response){
+     $scope.newDataWords=response;
+  })
+}
+
+$scope.add=function(){
+     if($scope.eng==null || $scope.tig==null){
+       document.getElementById("addInfo").innerHTML="Fill data please";
+    }else{
+      $http.post("/addNewWord/"+$scope.eng +"/"+$scope.tig+"/"+$scope.id).success(function(response){
+      refresh()
+      })
+
+    }
+}
+  //load words to update
+    var LoadDataToUpdate=function(){
+        $http.get('/updates').success(function(response){
+                $scope.dataToUpdate=response;
+              })
+      }
+        LoadDataToUpdate();
+            //select word to update
+    $scope.updateWord=function(words){
+       $scope.engField=words.word
+       $scope.idOfEmpty=words.value;
+      }
+
+     $scope.update=function(){
+          var tigWord=$scope.tigField;//the word in tigrigna
+          var language=7;//language of the word
+          var value=$scope.idOfEmpty;//value of the word
+          var userId=$scope.userId
+          if(tigWord==null){
+           document.getElementById('infoUpdate').innerHTML="Fill the spaces";
+          }else if($scope.idOfEmpty==null){
+            document.getElementById('infoUpdate').innerHTML="Select from the list";
+          }
+          else{
+              document.getElementById('infoUpdate').innerHTML="";
+              $http.put('/updateword/'+language+'/'+value+'/'+tigWord+'/'+userId).success(function(response){
+                      document.getElementById("updatesuccess").innerHTML="Successfully updated";
+                })
+                $http.put('/updatewordInColl/'+language+'/'+value+'/'+tigWord).success(function(response){
+                     
+                })
+               LoadDataToUpdate();
+            } 
+          }
+})
+</script>
+
+</body>
+</html>

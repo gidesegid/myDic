@@ -1,0 +1,170 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+/*div{
+  text-align: center;
+}*/
+
+#wrapper {
+    width: 100%;
+    height: 100% min-width: 320px;
+}
+
+
+.contentLimit {
+    margin: 10px 10px;
+    size: 90%;
+    padding: 5px;
+    width: 90%;
+}
+
+.result {
+    padding: 5px;
+    width: 90%;
+    background-color: rgb(255, 255, 255);
+}
+
+.mainBox {
+    background-color: rgb(255, 255, 204);
+    width: 280px;
+    margin: 0 auto;
+}
+
+.fromBox {
+    margin: 20px 30px;
+    width: 300px;
+    background-color: #F0FAF3;
+}
+
+.outPut {
+    /*background-color: white;
+  box-shadow: 2px 4px;
+  color: black;
+  width:80%;
+  height: 80%;*/
+    font-family: 'Abhaya Libre', serif;
+    padding-bottom: 50px;
+}
+
+.btn {
+    margin: 30px;
+    width: 200px;
+    height: 50px
+}
+
+header {
+    width: 100%;
+    /*height: 6em;*/
+    padding: 0.7em 1em 0.5em 2em;
+    color: #eee;
+    background-color: #333;
+    font-family: 'Francois One', sans-serif;
+}
+
+.langSelector {
+    font-family: 'Abhaya Libre', serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 4em;
+    font-weight: 200;
+    line-height: 4em;
+    color: #eee;
+    background-color: #44ba54;
+    text-align: center;
+}
+
+footer a {
+    color: #333;
+    font-weight: bold;
+}
+
+footer a:hover {
+    color: #b15;
+    font-weight: bold;
+}
+
+#header h1 {
+   
+    font-size: 25px;
+}
+
+
+#header{
+    display: inline-block;
+}
+.head{
+    float: left;
+    padding: 4px;
+}
+
+.head #one h1{
+    text-align: right;
+}
+.head #two h1{
+    text-align: left;
+}
+.toBox {
+    background-color: #F0FAF3;
+    width: 400px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.toBox h2 {
+    text-align: center;
+}
+
+.tableclass{
+background-color: white;
+font-size:18px;
+
+}
+.butwrap{
+ margin: 0 auto;
+}
+.butbox{
+    width: 350px;
+    display: inline-block;
+    background: rgb(240,349,360);
+}
+
+.butns{
+    padding: 5px;
+    margin: 2px 8px;
+    background: white;
+    border: none;
+}
+.clicked{
+  background-color: red;
+}
+.red{
+    color:red;
+  }
+  .blue{
+    color:blue;
+  }
+.class{
+  background-color: red;
+}
+/*@media and screen(min-width: 320px){
+  .toBox{
+    
+  }
+
+}*/

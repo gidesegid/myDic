@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="myApp2">
+<head>
+	<title></title>
+	 <!--google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Abhaya+Libre|Francois+One" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+      <script src="controller/maintainancectrl.js"></script>
+<style type="text/css">
+	body{
+        
+	}
+	div{
+		margin:50px 50px;
+	}
+	button{
+		margin:100px 10px;
+	}
+</style>
+</head>
+<body ng-controller="mycontrolleradmin">
+   <div>
+      <label>user name:<input type="password" ng-model="adminusername"></label>
+      <label>password:<input type="password" ng-model="adminpassword"></label>
+      <input type="button" value="login" ng-click="adminlogin()" class="btn btn-primary text-center" ng-model="searchmodel">
+      <label id="userinfo"></label>
+    </div>
+		<div ng-hide="hiden" ng-show="showed">
+			<label>english:<input type="text" ng-model="newwordsenglish"></label>
+			<label>tigrigna:<input type="text" ng-model="newwordstigrigna"></label>
+			<label>userid:<input type="text" ng-model="newwordsuserId"></label>
+			<label>id:<input type="text" ng-model="newwordsid"></label><br>
+			<input type="button" value="search" ng-click="newwordssearch()" class="btn btn-primary text-center" ng-model="newwordssearchmodel">
+			<input type="button" value="update" ng-click="newwordsupdate()" class="btn btn-primary text-center" ng-model="newwordsupdatemodel">
+			<input type="button" value="delete" ng-click="newwordsdelete()" class="btn btn-primary text-center" ng-model="newwordsdeletemodel">
+		</div>
+		<div ng-hide="hiden" ng-show="showed">
+			<label>New words</label>
+			<table class="table">
+               <thead>
+                   <tr>
+                     <th>english</th>
+                     <th>tigrigna</th>
+                     <th>userId</th>
+                     <th>id</th>
+                   </tr>
+               </thead>
+               <tbody>
+                  <tr ng-repeat="words in getnewwords |filter:english">
+                    <td ><input type="button" value="{{words.english}}" class="btn btn-primary" ng-click="newwordsclicked(words)"></td>
+                     <td>{{words.tigrigna}}</td>
+                     <td>{{words.userId}}</td>
+                     <td>{{words.id}}</td>
+                  </tr>
+               </tbody>
+            </table>
+		</div>
+</body>
+</html>

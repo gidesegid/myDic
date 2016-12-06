@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title></title>
+	 <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="controller/style.css">
+    <link rel="stylesheet" href="controller/autocomplete.css">
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+<style type="text/css">
+  .divmain{
+     margin:50px 50px;
+  }
+</style>
+</head>
+<body class="text-centere" ng-controller="mycontroller">
+         <header class="text-center">
+                <div id="header">
+                    <div class="head" id="one">
+                        <h1>Tigrigna <br> Translation</h1></div>
+                    <div class="head" id="two">
+                        <h1>ትርጎማ<br> ቛንቛ ትግርኛ</h1></div>
+                </div>
+          </header>
+
+<div class="divmain col-lg-4">
+  <form>
+   <div class="panel-body">
+       <div class="form-group">
+           <label for="userName">your name -- ስምኩም </label>
+           <input type="text" ng-model="username" class="form-control" id="userName" name="userName1" placeholder="Enter your name" required>
+       </div>
+       <div class="form-group">
+       <label for="content">Enter your message --  መልአኽትኹም</label>
+             <textarea ng-model="message" class="form-control" id="body" name="body" placeholder="write your message to admin" rows="3" required></textarea>
+       </div>
+       <div class="form-group">
+       <label id="successMessage" class="form-control"></label>
+       <input type="submit" value="Submit -- ስደድ" ng-model="submit" ng-click="add()" class="btn btn-primary">
+       </div>
+   </div>
+</form>
+</div>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script type="text/javascript">
+  
+
+      var myApp=angular.module('myApp',[]);
+      myApp.controller('mycontroller',function($scope,$http,$window){
+             //submit the message
+            
+            $scope.add=function(){
+               var name=$scope.username;
+               var message=$scope.message;
+               if(name==null || message==null){
+                 document.getElementById("successMessage").innerHTML="Insert message please.-- ብኽብረትኩም መልአኽትኹም ጸሓፉ";
+               }else{
+                    $http.post('/contactUs/'+name+'/'+message).success(function(response){
+                  document.getElementById("successMessage").innerHTML="Thank you for your message -- መልአክቲ ብምስዳድኩም ብጣዕሚ ነመስግን ። የቐንየልና !";
+                  name="";
+                  message="";
+              })
+            }
+             
+          }
+
+              $http.get('/updates').success(function(response){
+                $scope.dataToUpdate=response;
+              })
+            //select word to update
+              $scope.updateWord=function(words){
+                 $scope.engField=words.word
+                 $scope.idOfEmpty=words.value;
+                }
+               $scope.update=function(){
+                    var tigWord=$scope.tigField;//the word in tigrigna
+                    var language=7;//language of the word
+                    var value=$scope.idOfEmpty;//value of the word
+                    if(tigWord==null){
+                        alert("please fill data");
+                    }else{
+                         $http.put('/updateword/'+language+'/'+value+'/'+tigWord).success(function(response){
+                                alert("updated");
+                          })
+                    }
+               } 
+        });
+</script>
+
+</body>
+</html>
