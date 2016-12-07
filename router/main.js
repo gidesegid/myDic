@@ -2,10 +2,10 @@
 var express=require('express');
 var mysql=require('mysql');
 var connection=mysql.createConnection({
-  host:'localhost',
-  user:'root',
-  password:'wedisegid',
-  database:'dictionary2'
+  host:'hykrdb.cmsfrokrxjf7.us-west-2.rds.amazonaws.com',
+  user:'dictuser',
+  password:'qa2wsedcvr',
+  database:'HYKdictionary'
 });
 connection.connect(function(error){
   if(!!error){

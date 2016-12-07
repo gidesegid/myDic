@@ -9,6 +9,6 @@ app.set('views',__dirname + '/views');
 app.set('maintainance',__dirname + '/maintainance');
 app.engine('html', require('ejs').renderFile);
 app.use(express.static(__dirname+'/public'));
-http://localhost:3000/css/style.css
-app.listen(3000);
+http://localhost:3306/css/style.css
+app.listen(3306);
 console.log("server is running");
