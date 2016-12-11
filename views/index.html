@@ -44,7 +44,7 @@
                             <label ng-model="value"></label>
                         <div class="butwrap">
                             <div class="butbox">
-                                <button ng-click="fromSwitchTranslation(1)" onclick="english()" id="1" class="butns">English(amercan)</button>
+                                <button ng-click="fromSwitchTranslation(1)" onclick="english()" id="1" class="butns">English</button>
                                 <button ng-click="fromSwitchTranslation(2)" onclick="dutch()" id="2" class="butns">Dutch</button>
                                 <button ng-click="fromSwitchTranslation(3)" onclick="germen()" id="3" class="butns">Germany</button>
                                  <button ng-click="fromSwitchTranslation(4)" onclick="french()" id="4" class="butns">French</button>
@@ -56,10 +56,9 @@
                                  <button ng-click="fromSwitchTranslation(10)" onclick="israel()" id="10" class="butns">Israel</button>
                             </div>
                         </div>
-
+                        
                         <label class="contentLimit">
-                            <autocomplete ng-model="inputdata" attr-placeholder="type to search words..." click-activation="true" data="datas" ng-focus="hello()" on-type="fillData" on-select="dataSelection"></autocomplete>
-                           <label id="remainderLangSelector"></label>
+                            <autocomplete ng-model="inputdata" attr-placeholder="type to search words..." click-activation="true" data="datas" ng-focus="hello()" on-type="fillData" on-select="dataSelection"><input type="text" /></autocomplete>
                         </label>
                     </div>
                     <div class="toBox">
