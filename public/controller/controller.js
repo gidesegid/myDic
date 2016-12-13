@@ -21,7 +21,19 @@ app.factory('dataRetriever', function($http,$q, $timeout){
 }
   return dataRetriever;
 });
+app.directive('myEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.myEnter);
+                });
 
+                event.preventDefault();
+            }
+        });
+    };
+});
 //controller
 app.controller('MyCtrl',['$scope','$http','dataRetriever', function($scope,$http, dataRetriever){
           $scope.myData=[];
@@ -34,16 +46,8 @@ app.controller('MyCtrl',['$scope','$http','dataRetriever', function($scope,$http
 //filling data from data base to autocomplete textfield
   $scope.fillData = function(typedthings,fromSelectedLanguageId,inputdata){
     $scope.fromSelectedLanguageId=fromSelectedLanguageId
-    if($scope.languages===7){
-           
-              $scope.myFunct = function($event){
-             
-                if ($event.which == 113) {
-                    $scope.inputdata +="ቅ";
-                }
-              };
-    }
-   if($scope.languages==null){
+    
+   if($scope.languages===null){
        document.getElementById("remainderLangSelector").innerHTML="Select language from the above.ኣብ ላዕሊ ካብዘለዉ ቛንቛታት ምረጹ"
        document.getElementById("infoToLang").innerHTML="";
      }else if($scope.inputdata===""){
@@ -67,20 +71,50 @@ app.controller('MyCtrl',['$scope','$http','dataRetriever', function($scope,$http
       $scope.value=response.data[0].wordValueId;
   })
 }
+$scope.onEnter=function(suggestion){
+     $scope.dataSelection = function(suggestion){
+    $scope.datas=null;
+     $http.get('/word/'+$scope.languages+'/'+suggestion).then(function(response){
+       valueFromRemote = JSON.stringify((response.data).map(function(obj){ return obj.wordValueId }));
+       $scope.datas=JSON.parse(valueFromRemote);
+      $scope.value=response.data[0].wordValueId;
+  })
+}
+}
   //from languages
   $scope.fromSwitchTranslation=function(fromSelectedLanguageId){
     $scope.languages=fromSelectedLanguageId;
-     document.getElementById("remainderLangSelector").innerHTML="";
+     //document.getElementById("remainderLangSelector").innerHTML="";
      document.getElementById("infoToLang").innerHTML="";
   } 
 //to languages 
     $scope.toswitchTranslation=function(toswitchTranslationId){
       if($scope.inputdata==null){
         document.getElementById("infoToLang").innerHTML="Please select language from the top and fill word at the input field and then click this button.ካብ ኣብ ላዕሊ ዘለዉ መልጎም ቛንቛ ምረጹ ብድሕሪኡ ኣብ ትሕቲኡ ዘሎ መምልኢ ቦታ ዝደለኹሞ ቃላት ናይቲ ዝመረጽኩሞ ቛንቛ ድሕሪ ምጽሓፍ፣ካብቶም ዝመጽኹም ምርጫታት ውጽኢት ናይቲ ዝጸሓፍኩሞ መረጹ ኣብ መወዳእታ ናብቲ ክትርኮመልኩም ዝደለኹሞ ኣብ ታሕቲ ዘለዉ መልጎም ቛንቛታት ህረሙ።"
-      }else{
-          $http.get('/word2/'+toswitchTranslationId+'/'+$scope.value).success(function(response){
+      }else if($scope.value==null){
+          $http.get('/word3/'+$scope.languages+'/'+$scope.inputdata).then(function(response){
+           
+             console.log(response)
+              if(response.data[0].wordValueId===undefined){
+                 
+                document.getElementById("infoToLang").innerHTML="no such word"
+              }else{
+                 $scope.value=response.data[0].wordValueId;
+                $http.get('/word2/'+toswitchTranslationId+'/'+$scope.value).success(function(response){
+                    $scope.outPut=response;
+                  });
+                //document.getElementById("infoToLang").innerHTML="no such word"
+              }
+           });
+         
+         
+      }
+
+      else{
+         $http.get('/word2/'+toswitchTranslationId+'/'+$scope.value).success(function(response){
           $scope.outPut=response;
        });
+       document.getElementById("infoToLang").innerHTML=""
       }
     }
 }]);

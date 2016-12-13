@@ -2,7 +2,7 @@
 <html ng-app="app">
 
     <head>
-        <title></title>
+        <title>Tigrina Translator</title>
         <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="stylesheet" href="controller/style.css">
@@ -23,7 +23,7 @@
     <script type="text/javascript">var switchTo5x=true;</script>
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
     <script type="text/javascript">stLight.options({publisher: "b3a1c4c9-8c92-49b8-89af-93373273de26", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
-
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
     <body>
@@ -31,9 +31,11 @@
                     <div id="header">
                         <div class="head" id="one">
                             <h1>Tigrigna <br> Translation</h1></div>
-                        <div class="head" id="two">
-                            <h1>ትርጎማ<br> ቛንቛ ትግርኛ</h1></div>
+                            <div class="head" id="two">
+                                <h1>ትርጎማ<br> ቛንቛ ትግርኛ</h1>
+                            </div>
                     </div>
+
                 </header>
         <div ng-controller="MyCtrl" class="col-lg-3">
             <main class="container">
@@ -42,9 +44,10 @@
                            <!-- <h2 class="langSelector">From | ካብ</h2>-->
                             <label ng-model="languages"></label>
                             <label ng-model="value"></label>
+
                         <div class="butwrap">
                             <div class="butbox">
-                                <button ng-click="fromSwitchTranslation(1)" onclick="english()" id="1" class="butns">English(A)</button>
+                                <button ng-click="fromSwitchTranslation(1)" onclick="english()" id="1" class="butns">English</button>
                                 <button ng-click="fromSwitchTranslation(2)" onclick="dutch()" id="2" class="butns">Dutch</button>
                                 <button ng-click="fromSwitchTranslation(3)" onclick="germen()" id="3" class="butns">Germany</button>
                                  <button ng-click="fromSwitchTranslation(4)" onclick="french()" id="4" class="butns">French</button>
@@ -58,7 +61,7 @@
                         </div>
                         
                         <label class="contentLimit">
-                            <autocomplete ng-model="inputdata" attr-placeholder="type to search words..." click-activation="true" data="datas" ng-focus="hello()" on-type="fillData" on-select="dataSelection"><input type="text" /></autocomplete>
+                            <autocomplete ng-model="inputdata" attr-placeholder="type to search words..." my-enter="onEnter()" click-activation="true" data="datas" ng-focus="hello()" on-type="fillData" on-select="dataSelection"><input type="text" /></autocomplete>
                         </label>
                     </div>
                     <div class="toBox">

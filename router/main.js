@@ -116,6 +116,22 @@ module.exports = function(app)
           
              });
     });
+
+     app.get('/word3/:fromSwitchTranslationId/:datas',function(req,res){
+                 var fromSwitchTranslationId=req.params.fromSwitchTranslationId;
+                 var wordFromInput=req.params.datas;
+                
+              connection.query("select collectedwords.wordValueId from collectedwords where collectedwords.word='"+wordFromInput+"' and collectedwords.language_id='"+fromSwitchTranslationId+"'",function(error,row,fields){
+               if(!!error){
+                  console.log('error in query')
+                }else{
+                   console.log('succesfully connected');
+                   console.log(row);
+                   res.send(row);
+                }
+          
+             });
+    });
     //retrieve all new words to browther from database newword table
     app.get('/getAllNewWords',function(req,res){
                
