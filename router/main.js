@@ -117,11 +117,12 @@ module.exports = function(app)
              });
     });
 
-     app.get('/word3/:fromSwitchTranslationId/:datas',function(req,res){
+     app.get('/word3/:fromSwitchTranslationId/:toswitchTranslationId/:datas',function(req,res){
                  var fromSwitchTranslationId=req.params.fromSwitchTranslationId;
+                 var toswitchTranslationId=req.params.toswitchTranslationId
                  var wordFromInput=req.params.datas;
                 
-              connection.query("select collectedwords.wordValueId from collectedwords where collectedwords.word='"+wordFromInput+"' and collectedwords.language_id='"+fromSwitchTranslationId+"'",function(error,row,fields){
+              connection.query("select collectedwords.word from collectedwords where collectedwords.wordValueId=(select collectedwords.wordValueId from collectedwords where collectedwords.word='"+wordFromInput+"' and collectedwords.language_id='"+fromSwitchTranslationId+"') and collectedwords.language_id='"+toswitchTranslationId+"'",function(error,row,fields){
                if(!!error){
                   console.log('error in query')
                 }else{

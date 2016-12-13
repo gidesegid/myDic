@@ -84,7 +84,6 @@ $scope.onEnter=function(suggestion){
   //from languages
   $scope.fromSwitchTranslation=function(fromSelectedLanguageId){
     $scope.languages=fromSelectedLanguageId;
-     //document.getElementById("remainderLangSelector").innerHTML="";
      document.getElementById("infoToLang").innerHTML="";
   } 
 //to languages 
@@ -92,25 +91,12 @@ $scope.onEnter=function(suggestion){
       if($scope.inputdata==null){
         document.getElementById("infoToLang").innerHTML="Please select language from the top and fill word at the input field and then click this button.ካብ ኣብ ላዕሊ ዘለዉ መልጎም ቛንቛ ምረጹ ብድሕሪኡ ኣብ ትሕቲኡ ዘሎ መምልኢ ቦታ ዝደለኹሞ ቃላት ናይቲ ዝመረጽኩሞ ቛንቛ ድሕሪ ምጽሓፍ፣ካብቶም ዝመጽኹም ምርጫታት ውጽኢት ናይቲ ዝጸሓፍኩሞ መረጹ ኣብ መወዳእታ ናብቲ ክትርኮመልኩም ዝደለኹሞ ኣብ ታሕቲ ዘለዉ መልጎም ቛንቛታት ህረሙ።"
       }else if($scope.value==null){
-          $http.get('/word3/'+$scope.languages+'/'+$scope.inputdata).then(function(response){
-           
-             console.log(response)
-              if(response.data[0].wordValueId===undefined){
-                 
-                document.getElementById("infoToLang").innerHTML="no such word"
-              }else{
-                 $scope.value=response.data[0].wordValueId;
-                $http.get('/word2/'+toswitchTranslationId+'/'+$scope.value).success(function(response){
-                    $scope.outPut=response;
-                  });
-                //document.getElementById("infoToLang").innerHTML="no such word"
-              }
+          $http.get('/word3/'+$scope.languages+'/'+toswitchTranslationId+'/'+$scope.inputdata).success(function(response){
+           $scope.outPut=response
            });
-         
-         
       }
 
-      else{
+    else{
          $http.get('/word2/'+toswitchTranslationId+'/'+$scope.value).success(function(response){
           $scope.outPut=response;
        });
@@ -118,23 +104,6 @@ $scope.onEnter=function(suggestion){
       }
     }
 }]);
-
-   
-// var buttons = document.getElementsByTagName("button");
-// var buttonsCount = buttons.length;
-//  var arr=[];
-//  var arr2=["2","3","4","5","6","7","8","9","10"];
-// for (var i = 0; i <= buttonsCount; i += 1) {
-
-//     buttons[i].onclick = function(e) {
-//         document.getElementById(this.id).style.color='red';
-//         arr.shift(this.id)
-
-//         arr.push(this.id)
-
-//         console.log(arr);
-//     };
-//   }
 
 
 function toEnglish(){
