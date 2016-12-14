@@ -155,9 +155,9 @@ module.exports = function(app)
                console.log(eng)
                console.log(tig)
                console.log(id)
-              connection.query("insert into newWords(english,tigrigna,userId) values('"+eng+"'"+","+"'"+tig+"'"+","+"'"+id+"')",function(error,row,fields){
+              connection.query("insert into newwords(english,tigrigna,userId) values('"+eng+"'"+","+"'"+tig+"'"+","+"'"+id+"')",function(error,row,fields){
                if(!!error){
-                  console.log('error in query ፍሮም ዳታባኤዝ')
+                  console.log('error in query ፍሮም ዳታባኤዝ'+error)
                 }else{
                    console.log('succesfully connected');
                    console.log(row);
