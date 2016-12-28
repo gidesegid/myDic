@@ -59,6 +59,7 @@
                                  <button ng-click="fromSwitchTranslation(8)" onclick="sweeden()" id="8" class="butns">Swedish</button>
                                  <button ng-click="fromSwitchTranslation(9)" onclick="arabic()" id="9" class="butns">Arabic</button>
                                  <button ng-click="fromSwitchTranslation(10)" onclick="israel()" id="10" class="butns">Israel</button>
+                                  <button ng-click="fromSwitchTranslation(11)" onclick="danish()" id="11" class="butns">Danish</button>
                             </div>
                         </div>
                         
@@ -81,9 +82,10 @@
                                 <button ng-click="toswitchTranslation(8)" ng-model="sweeden" onclick="toSweeden()" id="to8" class="butns">Swedish</button>
                                 <button ng-click="toswitchTranslation(9)" ng-model="arabic" onclick="toArabic()" id="to9" class="butns">Arabic</button>
                                 <button ng-click="toswitchTranslation(10)" ng-model="israel" onclick="toIsrael()" id="to10" class="butns">Israel</button>
+                                <button ng-click="toswitchTranslation(11)" ng-model="danish" onclick="toDanish()" id="to11" class="butns">Danish</button>
                             </div>
                             <label id="infoToLang"></label><br><br>
-                                 <table class="table tableclass">
+                                 <table  class="table tableclass">
                                       <tbody class="tableclass">
                                            <tr ng-repeat="data in outPut">
                                               <td>{{data.word}}</td>
