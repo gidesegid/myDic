@@ -2,7 +2,7 @@
 <html ng-app="app">
 
     <head>
-
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <title>Tigrina Translator</title>
         <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
        
@@ -12,9 +12,6 @@
        <!-- Optional theme -->
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
   
-      <!-- Latest compiled and minified JavaScript -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
        <!--google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Abhaya+Libre|Francois+One" rel="stylesheet">
         <!-- Font-awesome CDN -->
@@ -25,17 +22,16 @@
         <link rel="stylesheet" href="controller/style.css">
         <link rel="stylesheet" href="controller/autocomplete.css">
     </head>
-
     <body>
        <header>
          <div class="container">
-            <div id="branding">
-                <a href="/"><img src="/images/tig-icon.png"></a>
+            <!-- <div id="branding">
+                <a href=""><img src="/images/tig-icon.png"></a>
                 <div id="register-mobile">
-                <a href="/workpage" id="login">Login</a>
-                <a href="/contactUs" id="signup">SignUp</a>  
-            </div>  
-            </div>
+                <a href="workPage" id="login">Login</a>
+                <a href="contact" id="signup">SignUp</a>  
+                </div>  
+            </div> -->
             <div class="title">
                 <div id="one">
                    <h1>Tigrigna <br> Translation</h1>
@@ -44,10 +40,10 @@
                       <h1>ትርጎማ<br> ቛንቛ ትግርኛ</h1>
                 </div>  
             </div>
-            <div id="register">
+           <!--  <div id="register">
                 <a href="#" id="login">Login</a>
                 <a href="#">SignUp</a>  
-            </div>  
+            </div>  --> 
          </div>
         </header>
         <div ng-controller="MyCtrl" id="main-part">
@@ -56,35 +52,44 @@
                             <label ng-model="languages"></label>
                             <label ng-model="value"></label>
                             <div class="butbox">
-                                <button ng-click="fromSwitchTranslation(1)" onclick="english()" id="1" class="butns">English</button>
-                                <button ng-click="fromSwitchTranslation(2)" onclick="dutch()" id="2" class="butns">Dutch</button>
-                                <button ng-click="fromSwitchTranslation(3)" onclick="germen()" id="3" class="butns">Germany</button>
-                                 <button ng-click="fromSwitchTranslation(4)" onclick="french()" id="4" class="butns">French</button>
-                                <button ng-click="fromSwitchTranslation(5)" onclick="italian()" id="5" class="butns">Italian</button>
-                                <button ng-click="fromSwitchTranslation(6)" onclick="norway()" id="6" class="butns">Norwegian</button>
-                                 <button ng-click="fromSwitchTranslation(7)" onclick="tigrigna()" id="7" class="butns">Tigrigna</button>
-                                 <button ng-click="fromSwitchTranslation(8)" onclick="sweeden()" id="8" class="butns">Swedish</button>
-                                 <button ng-click="fromSwitchTranslation(9)" onclick="arabic()" id="9" class="butns">Arabic</button>
-                                 <button ng-click="fromSwitchTranslation(10)" onclick="israel()" id="10" class="butns">Israel</button>
+                                <select ng-model="languages" ng-change="fromSwitchTranslation">
+                                    <option value="">Select / ምረጽ</option>
+                                    <option value="1" id="1" class="butns">English</option>
+                                    <option value="7" id="7" class="butns">Tigrigna</option>
+                                	  <option value="2" id="2" class="butns">Dutch</option>
+                                      <option value="3" id="3" class="butns">Germany</option>
+                                      <option value="4" id="4" class="butns">French</option>
+                                     <option value="5" id="5" class="butns">Italian</option>
+                                     <option value="6" id="6" class="butns">Norwegian</option>
+                                     <option value="8" id="8" class="butns">Swedish</option>
+                                     <option value="9" id="9" class="butns">Arabic</option>
+                                     <option value="10" id="10" class="butns">Israel</option>	
+                                </select>
+                              
                             </div>
                             <label class="contentLimit">
-                                <autocomplete ng-model="inputdata" attr-placeholder="type to search words..." my-enter="onEnter()" click-activation="true" data="datas" ng-focus="hello()" on-type="fillData" on-select="dataSelection"><textarea type="text" name="inPutLang" rows="6" cols="35"></textarea></autocomplete>
+                                <autocomplete ng-model="inputdata" attr-placeholder="type to search words..." my-enter="onEnter()" click-activation="true" data="datas" ng-focus="hello()" on-type="fillData" on-select="dataSelection"><textarea type="text" name="inPutLang" rows="8" cols="35"></textarea></autocomplete>
                             </label>
                        </div>
                        <div id=to-box>
                          <div class="butbox">
-                                <button ng-click="toswitchTranslation(1)" ng-model="english" onclick="toEnglish()" id="to1" class="butns">English</button>
-                                <button ng-click="toswitchTranslation(2)" ng-model="dutch" onclick="toDutch()" id="to2" class="butns">Dutch</button>
-                                <button ng-click="toswitchTranslation(3)" ng-model="germen" onclick="toGerman()" id="to3" class="butns">Germany</button>
-                                <button ng-click="toswitchTranslation(4)" ng-model="french" id="to4" onclick="toFrench()" class="butns">French</button>
-                                <button ng-click="toswitchTranslation(5)" ng-model="italian"  onclick="toItalian()" id="to5" class="butns">Italian</button>
-                               <button ng-click="toswitchTranslation(6)" ng-model="norway" onclick="toNorway()" id="to6" class="butns">Norwegian</button>
-                                <button ng-click="toswitchTranslation(7)" ng-model="tigrigna" onclick="toTigrigna()" id="to7" class="butns">Tigrigna</button>
-                                <button ng-click="toswitchTranslation(8)" ng-model="sweeden" onclick="toSweeden()" id="to8" class="butns">Swedish</button>
-                                <button ng-click="toswitchTranslation(9)" ng-model="arabic" onclick="toArabic()" id="to9" class="butns">Arabic</button>
-                                <button ng-click="toswitchTranslation(10)" ng-model="israel" onclick="toIsrael()" id="to10" class="butns">Israel</button>
+                          <label ng-model="lanuagesTo">{{languagesTo}}</label>
+                         		<select ng-model="languagesTo" ng-change="toSwitchTranslation(value)">
+                           
+                                  <option value="">Select / ምረጽ</option>
+                                  <option value="1" id="to1" class="butns">English</option>
+                                  <option value="2" id="to2" class="butns">Dutch</option>
+                                </select>
+                                <button ng-click="toswitchTranslation(3)" onclick="toGerman()" id="to3" class="butns">Germany</button>
+                                <button ng-click="toswitchTranslation(4)" id="to4" onclick="toFrench()" class="butns">French</button>
+                                <button ng-click="toswitchTranslation(5)" onclick="toItalian()" id="to5" class="butns">Italian</button>
+                               <button ng-click="toswitchTranslation(6)" onclick="toNorway()" id="to6" class="butns">Norwegian</button>
+                                <button ng-click="toswitchTranslation(7)" onclick="toTigrigna()" id="to7" class="butns">Tigrigna</button>
+                                <button ng-click="toswitchTranslation(8)" onclick="toSweden()" id="to8" class="butns">Swedish</button>
+                                <button ng-click="toswitchTranslation(9)" onclick="toArabic()" id="to9" class="butns">Arabic</button>
+                                <button ng-click="toswitchTranslation(10)" onclick="toIsrael()" id="to10" class="butns">Israel</button>
                             </div>
-                            <label id="infoToLang"></label>
+                            <label></label>
                                      <table class="table tableclass">
                                         <tbody class="tableclass">
                                            <tr ng-repeat="data in outPut">
@@ -96,17 +101,19 @@
              </div> 
           </div>      
           <footer>
-                <ul class="social">
+              <div id="footer-text">
+                <div class="users">
+                  <p>Want to add new words? Create a <span><a href="workPage" target="_blank" id="login">Login!</a></span></p>
+                  <p>You can ofcourse <span><a href="contact" target="_blank" id="contact">Contact us</a></span></p>
+                </div>
+                 <ul class="social">
                   <li><a href="https://www.facebook.com/Tigrinyatranslator" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#" target="_blank"><i class="fa fa-share-alt"></i></a></li>
                   <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                  <li><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                  <li><a href="#" target="_blank"><i class="fa fa-pinterest-p"></i></a></li>
-                  <li><a href="#" target="_blank"><i class="fa fa-envelope"></i></a></li>
                 </ul>
-                <div>
+                <div class="copyright">
                   <p>Copyright &copy; 2017</p>
                 </div>
+              </div>
          </footer>
        
 </body>

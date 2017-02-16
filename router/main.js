@@ -66,8 +66,8 @@ module.exports = function(app)
             console.log(error);
           console.log('error in query')
         }else{
-           console.log('succesfully connected');
-           console.log(row);
+           // console.log('succesfully connected');
+           // console.log(row);
            res.json(row);
         }
       })
@@ -79,8 +79,8 @@ module.exports = function(app)
         if(!!error){
           console.log('error in query')
         }else{
-           console.log('succesfully connected');
-           console.log(row);
+           // console.log('succesfully connected');
+           // console.log(row);
            res.json(row);
         }
       });
@@ -94,8 +94,8 @@ module.exports = function(app)
                 if(!!error){
                   console.log('error in query')
                 }else{
-                   console.log('succesfully connected');
-                   console.log(row);
+                   // console.log('succesfully connected');
+                   // console.log(row);
                    res.json(row);
                 }
               });
@@ -109,8 +109,8 @@ module.exports = function(app)
                if(!!error){
                   console.log('error in query')
                 }else{
-                   console.log('succesfully connected');
-                   console.log(row);
+                   // console.log('succesfully connected');
+                   // console.log(row);
                    res.send(row);
                 }
           
@@ -126,8 +126,8 @@ module.exports = function(app)
                if(!!error){
                   console.log('error in query')
                 }else{
-                   console.log('succesfully connected');
-                   console.log(row);
+                   // console.log('succesfully connected');
+                   // console.log(row);
                    res.send(row);
                 }
           
@@ -140,8 +140,8 @@ module.exports = function(app)
                if(!!error){
                   console.log('error in query from database maybee')
                 }else{
-                   console.log('succesfully connected');
-                   console.log(row);
+                   // console.log('succesfully connected');
+                   // console.log(row);
                    res.send(row);
                 }
           
@@ -159,8 +159,8 @@ module.exports = function(app)
                if(!!error){
                   console.log('error in query ፍሮም ዳታባኤዝ'+error)
                 }else{
-                   console.log('succesfully connected');
-                   console.log(row);
+                   // console.log('succesfully connected');
+                   // console.log(row);
                    res.send(row);
                 }
              });
@@ -174,8 +174,8 @@ module.exports = function(app)
                if(!!error){
                   console.log('error in query')
                 }else{
-                   console.log('succesfully connected');
-                   console.log(row);
+                   // console.log('succesfully connected');
+                   // console.log(row);
                    res.send(row);
                 }
           
@@ -188,8 +188,8 @@ module.exports = function(app)
                if(!!error){
                   console.log('error in query')
                 }else{
-                   console.log('succesfully connected');
-                   console.log(row);
+                   // console.log('succesfully connected');
+                   // console.log(row);
                    res.send(row);
                 }
           
@@ -206,8 +206,8 @@ module.exports = function(app)
        if(!!error){
           console.log('error in query')
         }else{
-           console.log('succesfully connected');
-           console.log(row);
+           // console.log('succesfully connected');
+           // console.log(row);
            res.send(row);
         }
   
@@ -223,8 +223,8 @@ module.exports = function(app)
        if(!!error){
           console.log('error in query')
         }else{
-           console.log('succesfully connected');
-           console.log(row);
+           // console.log('succesfully connected');
+           // console.log(row);
            res.send(row);
         }
   
@@ -238,8 +238,8 @@ module.exports = function(app)
        if(!!error){
           console.log('error in query')
         }else{
-           console.log('succesfully connected');
-           console.log(row);
+           // console.log('succesfully connected');
+           // console.log(row);
            res.send(row);
         }
   
@@ -257,8 +257,8 @@ module.exports = function(app)
                if(!!error){
                   console.log('error in query')
                 }else{
-                   console.log('succesfully connected');
-                   console.log(row);
+                   // console.log('succesfully connected');
+                   // console.log(row);
                    res.send(row);
                 }
           
@@ -274,8 +274,8 @@ module.exports = function(app)
        if(!!error){
           console.log('error in query')
         }else{
-           console.log('succesfully connected');
-           console.log(row);
+           // console.log('succesfully connected');
+           // console.log(row);
            res.send(row);
         }
   
@@ -289,8 +289,8 @@ module.exports = function(app)
        if(!!error){
           console.log('error in query')
         }else{
-           console.log('succesfully connected');
-           console.log(row);
+           // console.log('succesfully connected');
+           // console.log(row);
            res.send(row);
         }
   
@@ -303,8 +303,8 @@ module.exports = function(app)
        if(!!error){
           console.log('error in query')
         }else{
-           console.log('succesfully connected');
-           console.log(row);
+           // console.log('succesfully connected');
+           // console.log(row);
            res.send(row);
         }
   
@@ -318,8 +318,8 @@ module.exports = function(app)
        if(!!error){
           console.log('error in query')
         }else{
-           console.log('succesfully connected');
-           console.log(row);
+           // console.log('succesfully connected');
+           // console.log(row);
            res.send(row);
         }
   
@@ -332,8 +332,8 @@ module.exports = function(app)
            if(!!error){
               console.log('error in query')
             }else{
-               console.log('succesfully connected');
-               console.log(row);
+               // console.log('succesfully connected');
+               // console.log(row);
                res.send(row);
             }
   
@@ -348,8 +348,8 @@ module.exports = function(app)
        if(!!error){
           console.log('error in query')
         }else{
-           console.log('succesfully connected');
-           console.log(row);
+           // console.log('succesfully connected');
+           // console.log(row);
            res.send(row);
         }
   
@@ -362,8 +362,8 @@ module.exports = function(app)
        if(!!error){
           console.log('error in query')
         }else{
-           console.log('succesfully connected');
-           console.log(row);
+           // console.log('succesfully connected');
+           // console.log(row);
            res.send(row);
         }
   
@@ -375,8 +375,8 @@ module.exports = function(app)
            if(!!error){
               console.log('error in query')
             }else{
-               console.log('succesfully connected');
-               console.log(row);
+               // console.log('succesfully connected');
+               // console.log(row);
                res.send(row);
             }
   
@@ -389,8 +389,8 @@ module.exports = function(app)
        if(!!error){
           console.log('error in query')
         }else{
-           console.log('succesfully connected');
-           console.log(row);
+           // console.log('succesfully connected');
+           // console.log(row);
            res.send(row);
         }
   
@@ -403,8 +403,8 @@ module.exports = function(app)
            if(!!error){
               console.log('error in query')
             }else{
-               console.log('succesfully connected');
-               console.log(row);
+               // console.log('succesfully connected');
+               // console.log(row);
                res.send(row);
             }
   
@@ -419,8 +419,8 @@ module.exports = function(app)
        if(!!error){
           console.log('error in query')
         }else{
-           console.log('succesfully connected');
-           console.log(row);
+           // console.log('succesfully connected');
+           // console.log(row);
            res.send(row);
         }
   
@@ -433,8 +433,8 @@ module.exports = function(app)
        if(!!error){
           console.log('error in query')
         }else{
-           console.log('succesfully connected');
-           console.log(row);
+           // console.log('succesfully connected');
+           // console.log(row);
            res.send(row);
         }
   
@@ -449,8 +449,8 @@ module.exports = function(app)
        if(!!error){
           console.log('error in query')
         }else{
-           console.log('succesfully connected');
-           console.log(row);
+           // console.log('succesfully connected');
+           // console.log(row);
            res.send(row);
         }
   
@@ -465,8 +465,8 @@ module.exports = function(app)
        if(!!error){
           console.log('error in query')
         }else{
-           console.log('succesfully connected');
-           console.log(row);
+           // console.log('succesfully connected');
+           // console.log(row);
            res.send(row);
         }
   

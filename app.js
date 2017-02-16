@@ -11,4 +11,4 @@ app.engine('html', require('ejs').renderFile);
 app.use(express.static(__dirname+'/public'));
 http://localhost:3001/css/style.css
 app.listen(3001);
-console.log("server is running");
+console.log("server is running on port 3001");
