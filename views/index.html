@@ -52,6 +52,7 @@
                             <label ng-model="languages"></label>
                             <label ng-model="value"></label>
                             <div class="butbox">
+<<<<<<< HEAD
                                 <select ng-model="languages" ng-change="fromSwitchTranslation">
                                     <option value="">Select / ምረጽ</option>
                                     <option value="1" id="1" class="butns">English</option>
@@ -92,6 +93,46 @@
                             <label></label>
                                      <table class="table tableclass">
                                         <tbody class="tableclass">
+=======
+                                <button ng-click="fromSwitchTranslation(1)" onclick="english()" id="1" class="butns">English</button>
+                                <button ng-click="fromSwitchTranslation(2)" onclick="dutch()" id="2" class="butns">Dutch</button>
+                                <button ng-click="fromSwitchTranslation(3)" onclick="germen()" id="3" class="butns">Germany</button>
+                                 <button ng-click="fromSwitchTranslation(4)" onclick="french()" id="4" class="butns">French</button>
+                                <button ng-click="fromSwitchTranslation(5)" onclick="italian()" id="5" class="butns">Italian</button>
+                                <button ng-click="fromSwitchTranslation(6)" onclick="norway()" id="6" class="butns">Norwegian</button>
+                                 <button ng-click="fromSwitchTranslation(7)" onclick="tigrigna()" id="7" class="butns">Tigrigna</button>
+                                 <button ng-click="fromSwitchTranslation(8)" onclick="sweeden()" id="8" class="butns">Swedish</button>
+                                 <button ng-click="fromSwitchTranslation(9)" onclick="arabic()" id="9" class="butns">Arabic</button>
+                                 <button ng-click="fromSwitchTranslation(10)" onclick="israel()" id="10" class="butns">Israel</button>
+                                  <button ng-click="fromSwitchTranslation(11)" onclick="danish()" id="11" class="butns">Danish</button>
+                            </div>
+                        </div>
+                        
+                        <label class="contentLimit">
+                            <autocomplete ng-model="inputdata" attr-placeholder="type to search words..." my-enter="onEnter()" click-activation="true" data="datas" ng-focus="hello()" on-type="fillData" on-select="dataSelection"><input type="text" /></autocomplete>
+                        </label>
+                    </div>
+                    <div class="toBox">
+                        <!-- <h2 class="langSelector">To | ናብ</h2>-->
+                        <div class="butwrap">
+                       
+                            <div class="butbox">
+                                <button ng-click="toswitchTranslation(1)" ng-model="english" onclick="toEnglish()" id="to1" class="butns">English</button>
+                                <button ng-click="toswitchTranslation(2)" ng-model="dutch" onclick="toDutch()" id="to2" class="butns">Dutch</button>
+                                <button ng-click="toswitchTranslation(3)" ng-model="germen" onclick="toGerman()" id="to3" class="butns">Germany</button>
+                                <button ng-click="toswitchTranslation(4)" ng-model="french" id="to4" onclick="toFrench()" class="butns">French</button>
+                                <button ng-click="toswitchTranslation(5)" ng-model="italian"  onclick="toItalian()" id="to5" class="butns">Italian</button>
+                               <button ng-click="toswitchTranslation(6)" ng-model="norway" onclick="toNorway()" id="to6" class="butns">Norwegian</button>
+                                <button ng-click="toswitchTranslation(7)" ng-model="tigrigna" onclick="toTigrigna()" id="to7" class="butns">Tigrigna</button>
+                                <button ng-click="toswitchTranslation(8)" ng-model="sweeden" onclick="toSweeden()" id="to8" class="butns">Swedish</button>
+                                <button ng-click="toswitchTranslation(9)" ng-model="arabic" onclick="toArabic()" id="to9" class="butns">Arabic</button>
+                                <button ng-click="toswitchTranslation(10)" ng-model="israel" onclick="toIsrael()" id="to10" class="butns">Israel</button>
+                                <button ng-click="toswitchTranslation(11)" ng-model="danish" onclick="toDanish()" id="to11" class="butns">Danish</button>
+                            </div>
+                            <label id="infoToLang"></label><br><br>
+                                 <table  class="table tableclass">
+                                      <tbody class="tableclass">
+>>>>>>> origin
                                            <tr ng-repeat="data in outPut">
                                               <td>{{data.word}}</td>
                                            </tr>
