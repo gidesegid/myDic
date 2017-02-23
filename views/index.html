@@ -73,13 +73,8 @@
                        </div>
                        <div id=to-box>
                          <div class="butbox">
-                          <label ng-model="lanuagesTo">{{languagesTo}}</label>
-                            <select ng-model="languagesTo" ng-change="toSwitchTranslation(value)">
-                           
-                                  <option value="">Select / ምረጽ</option>
-                                  <option value="1" id="to1" class="butns">English</option>
-                                  <option value="2" id="to2" class="butns">Dutch</option>
-                                </select>
+                                <button ng-click="toswitchTranslation(1)" onclick="toEnglish()" id="to1" class="butns">English</button>
+                                <button ng-click="toswitchTranslation(2)" id="to2" onclick="toDutch()" class="butns">Dutch</button>
                                 <button ng-click="toswitchTranslation(3)" onclick="toGerman()" id="to3" class="butns">Germany</button>
                                 <button ng-click="toswitchTranslation(4)" id="to4" onclick="toFrench()" class="butns">French</button>
                                 <button ng-click="toswitchTranslation(5)" onclick="toItalian()" id="to5" class="butns">Italian</button>
