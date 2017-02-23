@@ -45,7 +45,7 @@ app.controller('MyCtrl',['$scope','$http','dataRetriever', function($scope,$http
       });
 //filling data from data base to autocomplete textfield
   $scope.fillData = function(typedthings,fromSelectedLanguageId,inputdata){
-    $scope.fromSelectedLanguageId=fromSelectedLanguageId
+    $scope.fromSelectedLanguageId=fromSelectedLanguageId;
     
    if($scope.languages===null){
        document.getElementById("remainderLangSelector").innerHTML="Select language from the above.ኣብ ላዕሊ ካብዘለዉ ቛንቛታት ምረጹ"
@@ -70,7 +70,6 @@ app.controller('MyCtrl',['$scope','$http','dataRetriever', function($scope,$http
        $scope.datas=JSON.parse(valueFromRemote);
       $scope.value=response.data[0].wordValueId;
   })
-
 }
 $scope.onEnter=function(suggestion){
      $scope.dataSelection = function(suggestion){
@@ -85,25 +84,24 @@ $scope.onEnter=function(suggestion){
   //from languages
   $scope.fromSwitchTranslation=function(fromSelectedLanguageId){
     $scope.languages=fromSelectedLanguageId;
-     document.getElementById("infoToLang").innerHTML="";
   } 
 //to languages 
     $scope.toswitchTranslation=function(toswitchTranslationId){
-       
+      $scope.languagesTo=toswitchTranslationId;
+      console.log($scope.languagesTo);
       if($scope.inputdata==null){
-        document.getElementById("infoToLang").innerHTML="Please select language from the top and fill word at the input field and then click this button.ካብ ኣብ ላዕሊ ዘለዉ መልጎም ቛንቛ ምረጹ ብድሕሪኡ ኣብ ትሕቲኡ ዘሎ መምልኢ ቦታ ዝደለኹሞ ቃላት ናይቲ ዝመረጽኩሞ ቛንቛ ድሕሪ ምጽሓፍ፣ካብቶም ዝመጽኹም ምርጫታት ውጽኢት ናይቲ ዝጸሓፍኩሞ መረጹ ኣብ መወዳእታ ናብቲ ክትርኮመልኩም ዝደለኹሞ ኣብ ታሕቲ ዘለዉ መልጎም ቛንቛታት ህረሙ።"
+        document.getElementById("infoToLang").innerHTML="Please select language from the top and fill word at the input field and .ካብ ኣብ ላዕሊ ዘለዉ መልጎም ቛንቛ ምረጹ ብድሕሪኡ ኣብ ትሕቲኡ ዘሎ መምልኢ ቦታ ዝደለኹሞ ቃላት ናይቲ ዝመረጽኩሞ ጽሓፍ።";
       }else if($scope.value==null){
           $http.get('/word3/'+$scope.languages+'/'+toswitchTranslationId+'/'+$scope.inputdata).success(function(response){
-           $scope.outPut=response
+           $scope.outPut=response;
            });
       }
 
     else{
-   
          $http.get('/word2/'+toswitchTranslationId+'/'+$scope.value).success(function(response){
           $scope.outPut=response;
        });
-       document.getElementById("infoToLang").innerHTML=""
+       //document.getElementById("infoToLang").innerHTML="";
       }
     }
 }]);
@@ -120,7 +118,7 @@ function toEnglish(){
   document.getElementById("to8").style.color='black';
   document.getElementById("to9").style.color='black';
   document.getElementById("to10").style.color='black';
-  document.getElementById("to11").style.color='black';
+
 }
 function toArabic(){
   document.getElementById("to1").style.color='black';
@@ -133,21 +131,6 @@ function toArabic(){
   document.getElementById("to8").style.color='black';
   document.getElementById("to9").style.color='red';
   document.getElementById("to10").style.color='black';
-   document.getElementById("to11").style.color='black';
-
-}
-function toDanish(){
-  document.getElementById("to1").style.color='black';
-  document.getElementById("to2").style.color='black';
-  document.getElementById("to3").style.color='black';
-  document.getElementById("to4").style.color='black';
-  document.getElementById("to5").style.color='black';
-  document.getElementById("to6").style.color='black';
-  document.getElementById("to7").style.color='black';
-  document.getElementById("to8").style.color='black';
-  document.getElementById("to9").style.color='black';
-  document.getElementById("to10").style.color='black';
-  document.getElementById("to11").style.color='red';
 
 }
 function toIsrael(){
@@ -161,7 +144,6 @@ function toIsrael(){
   document.getElementById("to8").style.color='black';
   document.getElementById("to9").style.color='black';
   document.getElementById("to10").style.color='red';
-  document.getElementById("to11").style.color='black';
 
 }
 function toDutch(){
@@ -175,7 +157,6 @@ function toDutch(){
   document.getElementById("to8").style.color='black';
   document.getElementById("to9").style.color='black';
   document.getElementById("to10").style.color='black';
-  document.getElementById("to11").style.color='black';
 
 }
 function toTigrigna(){
@@ -189,7 +170,6 @@ function toTigrigna(){
   document.getElementById("to8").style.color='black';
  document.getElementById("to9").style.color='black';
   document.getElementById("to10").style.color='black';
-  document.getElementById("to11").style.color='black';
 }
 function toFrench(){
   document.getElementById("to1").style.color='black';
@@ -202,7 +182,6 @@ function toFrench(){
   document.getElementById("to8").style.color='black';
  document.getElementById("to9").style.color='black';
   document.getElementById("to10").style.color='black';
-  document.getElementById("to11").style.color='black';
 }
 function toGerman(){
   document.getElementById("to1").style.color='black';
@@ -215,7 +194,6 @@ function toGerman(){
   document.getElementById("to8").style.color='black';
    document.getElementById("to9").style.color='black';
   document.getElementById("to10").style.color='black';
-  document.getElementById("to11").style.color='black';
 
 }
 function toItalian(){
@@ -229,7 +207,6 @@ function toItalian(){
   document.getElementById("to8").style.color='black';
    document.getElementById("to9").style.color='black';
   document.getElementById("to10").style.color='black';
-  document.getElementById("to11").style.color='black';
 }
 function toNorway(){
   document.getElementById("to1").style.color='black';
@@ -242,9 +219,8 @@ function toNorway(){
   document.getElementById("to8").style.color='black';
    document.getElementById("to9").style.color='black';
   document.getElementById("to10").style.color='black';
-  document.getElementById("to11").style.color='black';
 }
-function toSweeden(){
+function toSweden(){
   document.getElementById("to1").style.color='black';
   document.getElementById("to2").style.color='black';
   document.getElementById("to3").style.color='black';
@@ -255,150 +231,5 @@ function toSweeden(){
    document.getElementById("to8").style.color='red';
     document.getElementById("to9").style.color='black';
   document.getElementById("to10").style.color='black';
-  document.getElementById("to11").style.color='black';
 }
 
-function english(){
-  document.getElementById("1").style.color='red';
-  document.getElementById("2").style.color='black';
-  document.getElementById("3").style.color='black';
-  document.getElementById("4").style.color='black';
-  document.getElementById("5").style.color='black';
-  document.getElementById("6").style.color='black';
-  document.getElementById("7").style.color='black';
-  document.getElementById("8").style.color='black';
-   document.getElementById("9").style.color='black';
-   document.getElementById("10").style.color='black';
-    document.getElementById("11").style.color='black';
-}
-function arabic(){
-  document.getElementById("1").style.color='black';
-  document.getElementById("2").style.color='black';
-  document.getElementById("3").style.color='black';
-  document.getElementById("4").style.color='black';
-  document.getElementById("5").style.color='black';
-  document.getElementById("6").style.color='black';
-  document.getElementById("7").style.color='black';
-  document.getElementById("8").style.color='black';
-   document.getElementById("9").style.color='red';
-  document.getElementById("10").style.color='black';
-   document.getElementById("11").style.color='black';
-}
-function danish(){
-  document.getElementById("1").style.color='black';
-  document.getElementById("2").style.color='black';
-  document.getElementById("3").style.color='black';
-  document.getElementById("4").style.color='black';
-  document.getElementById("5").style.color='black';
-  document.getElementById("6").style.color='black';
-  document.getElementById("7").style.color='black';
-  document.getElementById("8").style.color='black';
-   document.getElementById("9").style.color='black';
-  document.getElementById("10").style.color='black';
-  document.getElementById("11").style.color='red';
-}
-function israel(){
-  document.getElementById("1").style.color='black';
-  document.getElementById("2").style.color='black';
-  document.getElementById("3").style.color='black';
-  document.getElementById("4").style.color='black';
-  document.getElementById("5").style.color='black';
-  document.getElementById("6").style.color='black';
-  document.getElementById("7").style.color='black';
-  document.getElementById("8").style.color='black';
-   document.getElementById("9").style.color='black';
-  document.getElementById("10").style.color='red';
-   document.getElementById("11").style.color='black';
-}
-function dutch(){
-  document.getElementById("1").style.color='black';
-  document.getElementById("2").style.color='red';
-  document.getElementById("3").style.color='black';
-  document.getElementById("4").style.color='black';
-  document.getElementById("5").style.color='black';
-  document.getElementById("6").style.color='black';
-  document.getElementById("7").style.color='black';
-   document.getElementById("8").style.color='black';
-    document.getElementById("9").style.color='black';
-   document.getElementById("10").style.color='black';
-    document.getElementById("11").style.color='black';
-
-}
-function tigrigna(){
-  document.getElementById("1").style.color='black';
-  document.getElementById("2").style.color='black';
-  document.getElementById("3").style.color='black';
-  document.getElementById("4").style.color='black';
-  document.getElementById("5").style.color='black';
-  document.getElementById("6").style.color='black';
-  document.getElementById("7").style.color='red';
-  document.getElementById("8").style.color='black';
-   document.getElementById("9").style.color='black';
-   document.getElementById("10").style.color='black';
-    document.getElementById("11").style.color='black';
-}
-function french(){
-  document.getElementById("1").style.color='black';
-  document.getElementById("2").style.color='black';
-  document.getElementById("3").style.color='black';
-  document.getElementById("4").style.color='red';
-  document.getElementById("5").style.color='black';
-  document.getElementById("6").style.color='black';
-  document.getElementById("7").style.color='black';
-  document.getElementById("8").style.color='black';
-   document.getElementById("9").style.color='black';
-   document.getElementById("10").style.color='black';
-    document.getElementById("11").style.color='black';
-}
-function germen(){
-  document.getElementById("1").style.color='black';
-  document.getElementById("2").style.color='black';
-  document.getElementById("3").style.color='red';
-  document.getElementById("4").style.color='black';
-  document.getElementById("5").style.color='black';
-  document.getElementById("6").style.color='black';
-  document.getElementById("7").style.color='black';
-  document.getElementById("8").style.color='black';
-   document.getElementById("9").style.color='black';
-   document.getElementById("10").style.color='black';
-    document.getElementById("11").style.color='black';
-}
-function italian(){
-  document.getElementById("1").style.color='black';
-  document.getElementById("2").style.color='black';
-  document.getElementById("3").style.color='black';
-  document.getElementById("4").style.color='black';
-  document.getElementById("5").style.color='red';
-  document.getElementById("6").style.color='black';
-  document.getElementById("7").style.color='black';
-   document.getElementById("8").style.color='black';
-    document.getElementById("9").style.color='black';
-   document.getElementById("10").style.color='black';
-    document.getElementById("11").style.color='black';
-}
-function norway(){
-  document.getElementById("1").style.color='black';
-  document.getElementById("2").style.color='black';
-  document.getElementById("3").style.color='black';
-  document.getElementById("4").style.color='black';
-  document.getElementById("5").style.color='black';
-  document.getElementById("6").style.color='red';
-  document.getElementById("7").style.color='black';
-   document.getElementById("8").style.color='black';
-    document.getElementById("9").style.color='black';
-   document.getElementById("10").style.color='black';
-    document.getElementById("11").style.color='black';
-}
-function sweeden(){
-  document.getElementById("1").style.color='black';
-  document.getElementById("2").style.color='black';
-  document.getElementById("3").style.color='black';
-  document.getElementById("4").style.color='black';
-  document.getElementById("5").style.color='black';
-  document.getElementById("6").style.color='black';
-  document.getElementById("7").style.color='black';
-   document.getElementById("8").style.color='red';
-    document.getElementById("9").style.color='black';
-   document.getElementById("10").style.color='black';
-    document.getElementById("11").style.color='black';
-}

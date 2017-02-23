@@ -2,115 +2,120 @@
 <html ng-app="app">
 
     <head>
-
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <title>Tigrina Translator</title>
-        <link rel="shortcut icon" href="images/favicon.jpg" type="image/jpg">
         <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
+       
+       <!-- Latest compiled and minified CSS -->
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+       <!-- Optional theme -->
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  
+       <!--google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Abhaya+Libre|Francois+One" rel="stylesheet">
+        <!-- Font-awesome CDN -->
+        <script src="https://use.fontawesome.com/9905f6c07d.js"></script>
+         <link rel="shortcut icon" href="images/favicon.jpg" type="image/jpg">
+             <!-- Style-sheets -->
+         <link rel="stylesheet" type="text/css" href="/css/style.css">
         <link rel="stylesheet" href="controller/style.css">
         <link rel="stylesheet" href="controller/autocomplete.css">
-        <!--google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Abhaya+Libre|Francois+One" rel="stylesheet">
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-        <script type="text/javascript" src="controller/autocomplete.js"></script>
-        <script type="text/javascript" src="controller/controller.js"></script>
-   <!-- <script type="text/javascript">var switchTo5x=true;</script>
-    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-    <script type="text/javascript">stLight.options({publisher: "", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>-->
-    <script type="text/javascript">var switchTo5x=true;</script>
-    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-    <script type="text/javascript">stLight.options({publisher: "b3a1c4c9-8c92-49b8-89af-93373273de26", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
-
     <body>
-               <header class="text-center">
-                    <div id="header">
-                        <div class="head" id="one">
-                            <h1>Tigrigna <br> Translation</h1></div>
-                            <div class="head" id="two">
-                                <h1>ትርጎማ<br> ቛንቛ ትግርኛ</h1>
-                            </div>
-                    </div>
-
-                </header>
-        <div ng-controller="MyCtrl" class="col-lg-3">
-            <main class="container">
-                <div class="mainBox row">
-                    <div class="toBox col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                           <!-- <h2 class="langSelector">From | ካብ</h2>-->
+       <header>
+         <div class="container">
+            <!-- <div id="branding">
+                <a href=""><img src="/images/tig-icon.png"></a>
+                <div id="register-mobile">
+                <a href="workPage" id="login">Login</a>
+                <a href="contact" id="signup">SignUp</a>  
+                </div>  
+            </div> -->
+            <div class="title">
+                <div id="one">
+                   <h1>Tigrigna <br> Translation</h1>
+                </div>
+                <div class="head" id="two">
+                      <h1>ትርጎማ<br> ቛንቛ ትግርኛ</h1>
+                </div>  
+            </div>
+           <!--  <div id="register">
+                <a href="#" id="login">Login</a>
+                <a href="#">SignUp</a>  
+            </div>  --> 
+         </div>
+        </header>
+        <div ng-controller="MyCtrl" id="main-part">
+                <div class="container">
+                       <div id="from-box">
                             <label ng-model="languages"></label>
                             <label ng-model="value"></label>
-
-                        <div class="butwrap">
                             <div class="butbox">
-                                <button ng-click="fromSwitchTranslation(1)" onclick="english()" id="1" class="butns">English</button>
-                                <button ng-click="fromSwitchTranslation(2)" onclick="dutch()" id="2" class="butns">Dutch</button>
-                                <button ng-click="fromSwitchTranslation(3)" onclick="germen()" id="3" class="butns">Germany</button>
-                                 <button ng-click="fromSwitchTranslation(4)" onclick="french()" id="4" class="butns">French</button>
-                                <button ng-click="fromSwitchTranslation(5)" onclick="italian()" id="5" class="butns">Italian</button>
-                                <button ng-click="fromSwitchTranslation(6)" onclick="norway()" id="6" class="butns">Norwegian</button>
-                                 <button ng-click="fromSwitchTranslation(7)" onclick="tigrigna()" id="7" class="butns">Tigrigna</button>
-                                 <button ng-click="fromSwitchTranslation(8)" onclick="sweeden()" id="8" class="butns">Swedish</button>
-                                 <button ng-click="fromSwitchTranslation(9)" onclick="arabic()" id="9" class="butns">Arabic</button>
-                                 <button ng-click="fromSwitchTranslation(10)" onclick="israel()" id="10" class="butns">Israel</button>
-                                  <button ng-click="fromSwitchTranslation(11)" onclick="danish()" id="11" class="butns">Danish</button>
+                                <select ng-model="languages" ng-change="fromSwitchTranslation">
+                                    <option value="">Select / ምረጽ</option>
+                                    <option value="1" id="1" class="butns">English</option>
+                                    <option value="7" id="7" class="butns">Tigrigna</option>
+                                    <option value="2" id="2" class="butns">Dutch</option>
+                                      <option value="3" id="3" class="butns">Germany</option>
+                                      <option value="4" id="4" class="butns">French</option>
+                                     <option value="5" id="5" class="butns">Italian</option>
+                                     <option value="6" id="6" class="butns">Norwegian</option>
+                                     <option value="8" id="8" class="butns">Swedish</option>
+                                     <option value="9" id="9" class="butns">Arabic</option>
+                                     <option value="10" id="10" class="butns">Israel</option> 
+                                </select>
+                              
                             </div>
-                        </div>
-                        
-                        <label class="contentLimit">
-                            <autocomplete ng-model="inputdata" attr-placeholder="type to search words..." my-enter="onEnter()" click-activation="true" data="datas" ng-focus="hello()" on-type="fillData" on-select="dataSelection"><input type="text" /></autocomplete>
-                        </label>
-                    </div>
-                    <div class="toBox">
-                        <!-- <h2 class="langSelector">To | ናብ</h2>-->
-                        <div class="butwrap">
-                       
-                            <div class="butbox">
-                                <button ng-click="toswitchTranslation(1)" ng-model="english" onclick="toEnglish()" id="to1" class="butns">English</button>
-                                <button ng-click="toswitchTranslation(2)" ng-model="dutch" onclick="toDutch()" id="to2" class="butns">Dutch</button>
-                                <button ng-click="toswitchTranslation(3)" ng-model="germen" onclick="toGerman()" id="to3" class="butns">Germany</button>
-                                <button ng-click="toswitchTranslation(4)" ng-model="french" id="to4" onclick="toFrench()" class="butns">French</button>
-                                <button ng-click="toswitchTranslation(5)" ng-model="italian"  onclick="toItalian()" id="to5" class="butns">Italian</button>
-                               <button ng-click="toswitchTranslation(6)" ng-model="norway" onclick="toNorway()" id="to6" class="butns">Norwegian</button>
-                                <button ng-click="toswitchTranslation(7)" ng-model="tigrigna" onclick="toTigrigna()" id="to7" class="butns">Tigrigna</button>
-                                <button ng-click="toswitchTranslation(8)" ng-model="sweeden" onclick="toSweeden()" id="to8" class="butns">Swedish</button>
-                                <button ng-click="toswitchTranslation(9)" ng-model="arabic" onclick="toArabic()" id="to9" class="butns">Arabic</button>
-                                <button ng-click="toswitchTranslation(10)" ng-model="israel" onclick="toIsrael()" id="to10" class="butns">Israel</button>
-                                <button ng-click="toswitchTranslation(11)" ng-model="danish" onclick="toDanish()" id="to11" class="butns">Danish</button>
+                            <label class="contentLimit">
+                                <autocomplete ng-model="inputdata" attr-placeholder="type to search words..." my-enter="onEnter()" click-activation="true" data="datas" ng-focus="hello()" on-type="fillData" on-select="dataSelection"></autocomplete>
+                            </label>
+                       </div>
+                       <div id=to-box>
+                         <div class="butbox">
+                                <button ng-click="toswitchTranslation(1)" onclick="toEnglish()" id="to1" class="butns">English</button>
+                                <button ng-click="toswitchTranslation(2)" id="to2" onclick="toDutch()" class="butns">Dutch</button>
+                                <button ng-click="toswitchTranslation(3)" onclick="toGerman()" id="to3" class="butns">Germany</button>
+                                <button ng-click="toswitchTranslation(4)" id="to4" onclick="toFrench()" class="butns">French</button>
+                                <button ng-click="toswitchTranslation(5)" onclick="toItalian()" id="to5" class="butns">Italian</button>
+                               <button ng-click="toswitchTranslation(6)" onclick="toNorway()" id="to6" class="butns">Norwegian</button>
+                                <button ng-click="toswitchTranslation(7)" onclick="toTigrigna()" id="to7" class="butns">Tigrigna</button>
+                                <button ng-click="toswitchTranslation(8)" onclick="toSweden()" id="to8" class="butns">Swedish</button>
+                                <button ng-click="toswitchTranslation(9)" onclick="toArabic()" id="to9" class="butns">Arabic</button>
+                                <button ng-click="toswitchTranslation(10)" onclick="toIsrael()" id="to10" class="butns">Israel</button>
                             </div>
-                            <label id="infoToLang"></label><br><br>
-                                 <table  class="table tableclass">
-                                      <tbody class="tableclass">
+                            <label></label>
+                                     <table class="table tableclass">
+                                        <tbody class="tableclass">
                                            <tr ng-repeat="data in outPut">
                                               <td>{{data.word}}</td>
                                            </tr>
-                                     </tbody>
-                                </table>
-
-                        </div><br><br>
-
-                    </div>
+                                        </tbody>
+                                    </table>
+                          </div>
+             </div> 
+          </div>      
+          <footer>
+              <div id="footer-text">
+                <div class="users">
+                  <p>Want to add new words? Create a <span><a href="workPage" target="_blank" id="login">Login!</a></span></p>
+                  <p>You can ofcourse <span><a href="contact" target="_blank" id="contact">Contact us</a></span></p>
                 </div>
-                
-            </main>
-         </div>      
-            <footer>
-                <span class='st_sharethis_large' displayText='ShareThis'></span>
-                <span class='st_facebook_large' displayText='Facebook'></span>
-                <span class='st_twitter_large' displayText='Tweet'></span>
-                <span class='st_linkedin_large' displayText='LinkedIn'></span>
-                <span class='st_pinterest_large' displayText='Pinterest'></span>
-                <span class='st_email_large' displayText='Email'></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="/workPage">login, to add new words</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="/contactUs">Contact us</a>
-            </footer>
+                 <ul class="social">
+                  <li><a href="https://www.facebook.com/Tigrinyatranslator" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                </ul>
+                <div class="copyright">
+                  <p>Copyright &copy; 2017</p>
+                </div>
+              </div>
+         </footer>
        
-        <!-- <script src='http://s.keyman.com/kmw/engine/408/keymanweb.js'></script> -->
-    </body>
+</body>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        <script type="text/javascript" src="/controller/autocomplete.js"></script>
+        <script type="text/javascript" src="/controller/controller.js"></script>
+  
+   <!--  <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript">stLight.options({publisher: "b3a1c4c9-8c92-49b8-89af-93373273de26", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script> -->
 </html>
