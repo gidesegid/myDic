@@ -75,7 +75,7 @@ module.exports = function(app)
      //languages data
     app.get('/languages',function(req,res){
   
-    connection.query("select * from languages",function(error,row,fields){
+    connection.query("select * from diclanguages",function(error,row,fields){
         if(!!error){
           console.log('error in query')
         }else{
@@ -136,7 +136,7 @@ module.exports = function(app)
     //retrieve all new words to browther from database newword table
     app.get('/getAllNewWords',function(req,res){
                
-              connection.query("select english,tigrigna,userId from newwords",function(error,row,fields){
+              connection.query("select english,tigrigna,userId from dicnewwords",function(error,row,fields){
                if(!!error){
                   console.log('error in query from database maybee')
                 }else{
@@ -155,7 +155,7 @@ module.exports = function(app)
                console.log(eng)
                console.log(tig)
                console.log(id)
-              connection.query("insert into newwords(english,tigrigna,userId) values('"+eng+"'"+","+"'"+tig+"'"+","+"'"+id+"')",function(error,row,fields){
+              connection.query("insert into dicnewwords(english,tigrigna,userId) values('"+eng+"'"+","+"'"+tig+"'"+","+"'"+id+"')",function(error,row,fields){
                if(!!error){
                   console.log('error in query ፍሮም ዳታባኤዝ'+error)
                 }else{
@@ -170,7 +170,7 @@ module.exports = function(app)
         var userName=req.params.userName;
         var password=req.params.password;
 
-            connection.query("select userName,password,id from users where userName=?",userName,function(error,row,fields){
+            connection.query("select userName,password,id from dicusers where userName=?",userName,function(error,row,fields){
                if(!!error){
                   console.log('error in query')
                 }else{
@@ -184,7 +184,7 @@ module.exports = function(app)
     //retrievd data for updates from table test1
      app.get('/updates',function(req,res){
        
-            connection.query("SELECT * from test1 where wordTig='"+"' LIMIT 20",function(error,row,fields){
+            connection.query("SELECT * from dictest1 where wordTig='"+"' LIMIT 20",function(error,row,fields){
                if(!!error){
                   console.log('error in query')
                 }else{
@@ -202,7 +202,7 @@ module.exports = function(app)
       var word=req.params.word;
       var userId=req.params.userId
      //update to test1 
-     connection.query("UPDATE test1 SET wordTig='"+word+"'"+",userId="+userId+"  WHERE value='"+value+"'",function(error,row,fields){
+     connection.query("UPDATE dictest1 SET wordTig='"+word+"'"+",userId="+userId+"  WHERE value='"+value+"'",function(error,row,fields){
        if(!!error){
           console.log('error in query')
         }else{
@@ -234,7 +234,7 @@ module.exports = function(app)
    app.post('/contactUs/:name/:message',function(req,res){
     var name=req.params.name;
     var message=req.params.message;
-    connection.query("insert into contacts(name,message) value('"+name+"','"+message+"')",function(error,row,fields){
+    connection.query("insert into diccontacts(name,message) value('"+name+"','"+message+"')",function(error,row,fields){
        if(!!error){
           console.log('error in query')
         }else{
@@ -299,7 +299,7 @@ module.exports = function(app)
     //contact messages.....................................................................................
    //retrieving all contacts message
     app.get('/contactmessages',function(req,res){
-      connection.query("select * from contacts",function(error,row,fields){
+      connection.query("select * from diccontacts",function(error,row,fields){
        if(!!error){
           console.log('error in query')
         }else{
@@ -314,7 +314,7 @@ module.exports = function(app)
      app.delete('/contactmessages/:name/:id',function(req,res){
                var name=req.params.name;
                var id=req.params.id;
-      connection.query("DELETE from contacts where name='"+name+"' AND id="+id+"",function(error,row,fields){
+      connection.query("DELETE from diccontacts where name='"+name+"' AND id="+id+"",function(error,row,fields){
        if(!!error){
           console.log('error in query')
         }else{
@@ -328,7 +328,7 @@ module.exports = function(app)
 
      //retrieving words from newword table in database--------------------------------------------------------------------------------------------
      app.get('/listOfnewwords',function(req,res){
-           connection.query("select * from newwords",function(error,row,fields){
+           connection.query("select * from dicnewwords",function(error,row,fields){
            if(!!error){
               console.log('error in query')
             }else{
@@ -344,7 +344,7 @@ module.exports = function(app)
               var english=req.params.english;
               var tigrigna=req.params.tigrigna
               var id=req.params.id
-      connection.query("UPDATE newwords SET english='"+english+"',tigrigna='"+tigrigna+"'  WHERE id="+id+"",function(error,row,fields){
+      connection.query("UPDATE dicnewwords SET english='"+english+"',tigrigna='"+tigrigna+"'  WHERE id="+id+"",function(error,row,fields){
        if(!!error){
           console.log('error in query')
         }else{
@@ -358,7 +358,7 @@ module.exports = function(app)
     //DELETing a word from newwords table
     app.delete('/listOfnewwords/:id',function(req,res){
                var id=req.params.id;
-      connection.query("DELETE from newwords where id="+id+"",function(error,row,fields){
+      connection.query("DELETE from dicnewwords where id="+id+"",function(error,row,fields){
        if(!!error){
           console.log('error in query')
         }else{
@@ -371,7 +371,7 @@ module.exports = function(app)
     })
     //retrieving data from test1 table--------------------------------------------------------------------------------
       app.get('/listOftest1',function(req,res){
-           connection.query("select * from test1",function(error,row,fields){
+           connection.query("select * from dictest1",function(error,row,fields){
            if(!!error){
               console.log('error in query')
             }else{
@@ -385,7 +385,7 @@ module.exports = function(app)
        //DELETing data from test1 table
     app.delete('/listOftest1/:value',function(req,res){
                var value=req.params.value;
-      connection.query("DELETE from test1 where value="+value+"",function(error,row,fields){
+      connection.query("DELETE from dictest1 where value="+value+"",function(error,row,fields){
        if(!!error){
           console.log('error in query')
         }else{
@@ -399,7 +399,7 @@ module.exports = function(app)
 
     //retrieving users from user table in database ----------------------------------------------------------
       app.get('/listOfusers',function(req,res){
-           connection.query("select * from users",function(error,row,fields){
+           connection.query("select * from dicusers",function(error,row,fields){
            if(!!error){
               console.log('error in query')
             }else{
@@ -415,7 +415,7 @@ module.exports = function(app)
               var userName=req.params.userName;
               var password=req.params.password
               var id=req.params.id
-      connection.query("UPDATE users SET userName='"+userName+"',password='"+password+"'  WHERE id="+id+"",function(error,row,fields){
+      connection.query("UPDATE dicusers SET userName='"+userName+"',password='"+password+"'  WHERE id="+id+"",function(error,row,fields){
        if(!!error){
           console.log('error in query')
         }else{
@@ -429,7 +429,7 @@ module.exports = function(app)
     //DELETing users from users table
     app.delete('/listOfusers/:id',function(req,res){
                var id=req.params.id;
-      connection.query("DELETE from users where id="+id+"",function(error,row,fields){
+      connection.query("DELETE from dicusers where id="+id+"",function(error,row,fields){
        if(!!error){
           console.log('error in query')
         }else{
@@ -445,7 +445,7 @@ module.exports = function(app)
       var userName=req.params.userName;
       var password=req.params.password
 
-      connection.query("insert into users(userName,password) values('"+userName+"','"+password+"')",function(error,row,fields){
+      connection.query("insert into dicusers(userName,password) values('"+userName+"','"+password+"')",function(error,row,fields){
        if(!!error){
           console.log('error in query')
         }else{
@@ -461,7 +461,7 @@ module.exports = function(app)
     app.get('/admin/:adminusername/:adminpassword',function(req,res){
            var userName=req.params.adminusername
            var password=req.params.adminpassword;
-       connection.query("select fielduser,fieldpassword from admintable where fielduser='"+userName+"' AND  fieldpassword='"+password+"'",function(error,row,fields){
+       connection.query("select fielduser,fieldpassword from dicadmintable where fielduser='"+userName+"' AND  fieldpassword='"+password+"'",function(error,row,fields){
        if(!!error){
           console.log('error in query')
         }else{
