@@ -88,16 +88,17 @@ $scope.onEnter=function(suggestion){
 //to languages 
     $scope.toswitchTranslation=function(toswitchTranslationId){
       $scope.languagesTo=toswitchTranslationId;
-      console.log($scope.languagesTo);
       if($scope.inputdata==null){
-        document.getElementById("infoToLang").innerHTML="Please select language from the top and fill word at the input field and .ካብ ኣብ ላዕሊ ዘለዉ መልጎም ቛንቛ ምረጹ ብድሕሪኡ ኣብ ትሕቲኡ ዘሎ መምልኢ ቦታ ዝደለኹሞ ቃላት ናይቲ ዝመረጽኩሞ ጽሓፍ።";
+        document.getElementById("infoToLang").innerHTML="Select language. ቋንቋ ምረጹ።";
       }else if($scope.value==null){
+          $scope.outPut=''
           $http.get('/word3/'+$scope.languages+'/'+toswitchTranslationId+'/'+$scope.inputdata).success(function(response){
            $scope.outPut=response;
            });
       }
 
     else{
+         $scope.outPut='';
          $http.get('/word2/'+toswitchTranslationId+'/'+$scope.value).success(function(response){
           $scope.outPut=response;
        });
@@ -118,6 +119,7 @@ function toEnglish(){
   document.getElementById("to8").style.color='black';
   document.getElementById("to9").style.color='black';
   document.getElementById("to10").style.color='black';
+  $scope.outPut='';
 
 }
 function toArabic(){
