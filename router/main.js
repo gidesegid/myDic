@@ -17,6 +17,15 @@ connection.connect(function(error){
 
 module.exports = function(app)
 {
+      app.get('/languages',function(req,res){
+        connection.query("select id,languages from languages",function(error,row,fields){
+          if(!!error){
+                   res.json(error)
+          }else{
+             res.json(row);
+          }
+        })
+      })
      app.get('/',function(req,res){
         res.render('index.html')
      });
@@ -56,7 +65,21 @@ module.exports = function(app)
             app.get('/users',function(req,res){
         res.render('maintainance/users.html');
     });
-      
+       app.get('/getWord/:fromLanguageId/:word/:toLanguageId',function(req,res){
+        var fromLanguageId=req.params.fromLanguageId;
+        var word=req.params.word
+        var toLanguageId=req.params.toLanguageId
+        connection.query("select word from collectedwords where wordValueId IN (select wordValueId from collectedwords where word='"+word+"' and language_id='"+fromLanguageId+"') and language_Id='"+toLanguageId+"'",function(error,row,fields){
+        if(!!error){
+            console.log(error);
+          console.log('error in query')
+        }else{
+           console.log('succesfully connected');
+           console.log(row);
+           res.json(row);
+        }
+      })
+     })
        //autocomplete data
      app.get('/auto/:languages/:inputdata',function(req,res){
         var id=req.params.languages;
