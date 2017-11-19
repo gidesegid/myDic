@@ -72,14 +72,23 @@ module.exports = function(app)
         connection.query("select word from collectedwords where wordValueId IN (select wordValueId from collectedwords where word='"+word+"' and language_id='"+fromLanguageId+"') and language_Id='"+toLanguageId+"'",function(error,row,fields){
         if(!!error){
             console.log(error);
-          console.log('error in query')
         }else{
-           console.log('succesfully connected');
-           console.log(row);
            res.json(row);
         }
       })
      })
+     app.get('/getRelatedWords/:fromLanguageId/:word/:toLanguageId',function(req,res){
+        var fromLanguageId=req.params.fromLanguageId;
+        var word=req.params.word
+        var toLanguageId=req.params.toLanguageId
+        connection.query("select word from collectedwords  where language_id='"+fromLanguageId+"' and word like '"+word+"%'",function(error,row,fields){
+        if(!!error){
+            console.log(error);
+        }else{
+           res.json(row);
+        }
+      })
+    })
        //autocomplete data
      app.get('/auto/:languages/:inputdata',function(req,res){
         var id=req.params.languages;
