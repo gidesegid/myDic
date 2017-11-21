@@ -81,7 +81,7 @@ module.exports = function(app)
         var fromLanguageId=req.params.fromLanguageId;
         var word=req.params.word
         var toLanguageId=req.params.toLanguageId
-        connection.query("select word from collectedwords  where language_id='"+fromLanguageId+"' and word like '"+word+"%'",function(error,row,fields){
+        connection.query("select word from collectedwords  where language_id='"+fromLanguageId+"' and word like '"+word+"%' group by word",function(error,row,fields){
         if(!!error){
             console.log(error);
         }else{
