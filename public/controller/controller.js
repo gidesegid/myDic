@@ -11,8 +11,8 @@ app.factory('dataRetriever', function($http,$q, $timeout){
     var dataFromRemote;
   $http.get('/auto/'+languages+'/'+inputdata).then(function(response){
        dataFromRemote = JSON.stringify((response.data).map(function(obj){ return obj.word }));
-       var datas=JSON.parse(dataFromRemote); 
-       
+       var datas=JSON.parse(dataFromRemote);
+
     $timeout(function(){
       data.resolve(datas);
     },1000);
@@ -46,7 +46,7 @@ app.controller('MyCtrl',['$scope','$http','dataRetriever', function($scope,$http
 //filling data from data base to autocomplete textfield
   $scope.fillData = function(typedthings,fromSelectedLanguageId,inputdata){
     $scope.fromSelectedLanguageId=fromSelectedLanguageId;
-    
+
    if($scope.languages===null){
        document.getElementById("remainderLangSelector").innerHTML="Select language from the above.ኣብ ላዕሊ ካብዘለዉ ቛንቛታት ምረጹ"
        document.getElementById("infoToLang").innerHTML="";
@@ -58,7 +58,7 @@ app.controller('MyCtrl',['$scope','$http','dataRetriever', function($scope,$http
         $scope.datas=null;
         dataPromise.then(function(data){
         $scope.datas = data;
-   
+
        });
      }
    }
@@ -84,8 +84,8 @@ $scope.onEnter=function(suggestion){
   //from languages
   $scope.fromSwitchTranslation=function(fromSelectedLanguageId){
     $scope.languages=fromSelectedLanguageId;
-  } 
-//to languages 
+  }
+//to languages
     $scope.toswitchTranslation=function(toswitchTranslationId){
       $scope.languagesTo=toswitchTranslationId;
       if($scope.inputdata==null){
@@ -108,130 +108,14 @@ $scope.onEnter=function(suggestion){
 }]);
 
 
-function toEnglish(){
-  document.getElementById("to1").style.color='red';
-  document.getElementById("to2").style.color='black';
-  document.getElementById("to3").style.color='black';
-  document.getElementById("to4").style.color='black';
-  document.getElementById("to5").style.color='black';
-  document.getElementById("to6").style.color='black';
-  document.getElementById("to7").style.color='black';
-  document.getElementById("to8").style.color='black';
-  document.getElementById("to9").style.color='black';
-  document.getElementById("to10").style.color='black';
-  $scope.outPut='';
-
+function changeStyle(id) {
+  //var buttons = document.querySelectorAll('div[role=button]');
+  var buttons = document.getElementsByClassName("butns");
+  for(var i = 0; i < buttons.length; i++) {
+     if (buttons[i].id == id) {
+       document.getElementById(id).style.color='red';
+     } else {
+      buttons[i].style.color='black';
+     }
+  }
 }
-function toArabic(){
-  document.getElementById("to1").style.color='black';
-  document.getElementById("to2").style.color='black';
-  document.getElementById("to3").style.color='black';
-  document.getElementById("to4").style.color='black';
-  document.getElementById("to5").style.color='black';
-  document.getElementById("to6").style.color='black';
-  document.getElementById("to7").style.color='black';
-  document.getElementById("to8").style.color='black';
-  document.getElementById("to9").style.color='red';
-  document.getElementById("to10").style.color='black';
-
-}
-function toIsrael(){
-  document.getElementById("to1").style.color='black';
-  document.getElementById("to2").style.color='black';
-  document.getElementById("to3").style.color='black';
-  document.getElementById("to4").style.color='black';
-  document.getElementById("to5").style.color='black';
-  document.getElementById("to6").style.color='black';
-  document.getElementById("to7").style.color='black';
-  document.getElementById("to8").style.color='black';
-  document.getElementById("to9").style.color='black';
-  document.getElementById("to10").style.color='red';
-
-}
-function toDutch(){
-  document.getElementById("to1").style.color='black';
-  document.getElementById("to2").style.color='red';
-  document.getElementById("to3").style.color='black';
-  document.getElementById("to4").style.color='black';
-  document.getElementById("to5").style.color='black';
-  document.getElementById("to6").style.color='black';
-  document.getElementById("to7").style.color='black';
-  document.getElementById("to8").style.color='black';
-  document.getElementById("to9").style.color='black';
-  document.getElementById("to10").style.color='black';
-
-}
-function toTigrigna(){
-  document.getElementById("to1").style.color='black';
-  document.getElementById("to2").style.color='black';
-  document.getElementById("to3").style.color='black';
-  document.getElementById("to4").style.color='black';
-  document.getElementById("to5").style.color='black';
-  document.getElementById("to6").style.color='black';
-  document.getElementById("to7").style.color='red';
-  document.getElementById("to8").style.color='black';
- document.getElementById("to9").style.color='black';
-  document.getElementById("to10").style.color='black';
-}
-function toFrench(){
-  document.getElementById("to1").style.color='black';
-  document.getElementById("to2").style.color='black';
-  document.getElementById("to3").style.color='black';
-  document.getElementById("to4").style.color='red';
-  document.getElementById("to5").style.color='black';
-  document.getElementById("to6").style.color='black';
-  document.getElementById("to7").style.color='black';
-  document.getElementById("to8").style.color='black';
- document.getElementById("to9").style.color='black';
-  document.getElementById("to10").style.color='black';
-}
-function toGerman(){
-  document.getElementById("to1").style.color='black';
-  document.getElementById("to2").style.color='black';
-  document.getElementById("to3").style.color='red';
-  document.getElementById("to4").style.color='black';
-  document.getElementById("to5").style.color='black';
-  document.getElementById("to6").style.color='black';
-  document.getElementById("to7").style.color='black';
-  document.getElementById("to8").style.color='black';
-   document.getElementById("to9").style.color='black';
-  document.getElementById("to10").style.color='black';
-
-}
-function toItalian(){
-  document.getElementById("to1").style.color='black';
-  document.getElementById("to2").style.color='black';
-  document.getElementById("to3").style.color='black';
-  document.getElementById("to4").style.color='black';
-  document.getElementById("to5").style.color='red';
-  document.getElementById("to6").style.color='black';
-  document.getElementById("to7").style.color='black';
-  document.getElementById("to8").style.color='black';
-   document.getElementById("to9").style.color='black';
-  document.getElementById("to10").style.color='black';
-}
-function toNorway(){
-  document.getElementById("to1").style.color='black';
-  document.getElementById("to2").style.color='black';
-  document.getElementById("to3").style.color='black';
-  document.getElementById("to4").style.color='black';
-  document.getElementById("to5").style.color='black';
-  document.getElementById("to6").style.color='red';
-  document.getElementById("to7").style.color='black';
-  document.getElementById("to8").style.color='black';
-   document.getElementById("to9").style.color='black';
-  document.getElementById("to10").style.color='black';
-}
-function toSweden(){
-  document.getElementById("to1").style.color='black';
-  document.getElementById("to2").style.color='black';
-  document.getElementById("to3").style.color='black';
-  document.getElementById("to4").style.color='black';
-  document.getElementById("to5").style.color='black';
-  document.getElementById("to6").style.color='black';
-  document.getElementById("to7").style.color='black';
-   document.getElementById("to8").style.color='red';
-    document.getElementById("to9").style.color='black';
-  document.getElementById("to10").style.color='black';
-}
-

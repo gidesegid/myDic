@@ -5,13 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <title>Tigrina Translator</title>
         <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
-       
+
        <!-- Latest compiled and minified CSS -->
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
        <!-- Optional theme -->
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-  
+
        <!--google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Abhaya+Libre|Francois+One" rel="stylesheet">
         <!-- Font-awesome CDN -->
@@ -29,8 +29,8 @@
                 <a href=""><img src="/images/tig-icon.png"></a>
                 <div id="register-mobile">
                 <a href="workPage" id="login">Login</a>
-                <a href="contact" id="signup">SignUp</a>  
-                </div>  
+                <a href="contact" id="signup">SignUp</a>
+                </div>
             </div> -->
             <div class="title">
                 <div id="one">
@@ -38,12 +38,12 @@
                 </div>
                 <div class="head" id="two">
                       <h1>ትርጎማ<br> ቛንቛ ትግርኛ</h1>
-                </div>  
+                </div>
             </div>
            <!--  <div id="register">
                 <a href="#" id="login">Login</a>
-                <a href="#">SignUp</a>  
-            </div>  --> 
+                <a href="#">SignUp</a>
+            </div>  -->
          </div>
         </header>
         <div ng-controller="MyCtrl" id="main-part">
@@ -63,9 +63,9 @@
                                      <option value="6" id="6" class="butns">Norwegian</option>
                                      <option value="8" id="8" class="butns">Swedish</option>
                                      <option value="9" id="9" class="butns">Arabic</option>
-                                     <option value="10" id="10" class="butns">Israel</option> 
+                                     <option value="10" id="10" class="butns">Israel</option>
                                 </select>
-                              
+
                             </div>
                             <label class="contentLimit">
                                 <autocomplete ng-model="inputdata" attr-placeholder="type to search words..." my-enter="onEnter()" click-activation="true" data="datas" ng-focus="hello()" on-type="fillData" on-select="dataSelection"></autocomplete>
@@ -73,16 +73,16 @@
                        </div>
                        <div id=to-box>
                          <div class="butbox">
-                                <button ng-click="toswitchTranslation(1)" onclick="toEnglish()" id="to1" class="butns">English</button>
-                                <button ng-click="toswitchTranslation(2)" id="to2" onclick="toDutch()" class="butns">Dutch</button>
-                                <button ng-click="toswitchTranslation(3)" onclick="toGerman()" id="to3" class="butns">Germany</button>
-                                <button ng-click="toswitchTranslation(4)" id="to4" onclick="toFrench()" class="butns">French</button>
-                                <button ng-click="toswitchTranslation(5)" onclick="toItalian()" id="to5" class="butns">Italian</button>
-                               <button ng-click="toswitchTranslation(6)" onclick="toNorway()" id="to6" class="butns">Norwegian</button>
-                                <button ng-click="toswitchTranslation(7)" onclick="toTigrigna()" id="to7" class="butns">Tigrigna</button>
-                                <button ng-click="toswitchTranslation(8)" onclick="toSweden()" id="to8" class="butns">Swedish</button>
-                                <button ng-click="toswitchTranslation(9)" onclick="toArabic()" id="to9" class="butns">Arabic</button>
-                                <button ng-click="toswitchTranslation(10)" onclick="toIsrael()" id="to10" class="butns">Israel</button>
+                                <button ng-click="toswitchTranslation(1)" onclick="changeStyle(this.id)" id="to1" class="butns">English</button>
+                                <button ng-click="toswitchTranslation(2)" id="to2" onclick="changeStyle(this.id)" class="butns">Dutch</button>
+                                <button ng-click="toswitchTranslation(3)" onclick="changeStyle(this.id)" id="to3" class="butns">Germany</button>
+                                <button ng-click="toswitchTranslation(4)" id="to4" onclick="changeStyle(this.id)" class="butns">French</button>
+                                <button ng-click="toswitchTranslation(5)" onclick="changeStyle(this.id)" id="to5" class="butns">Italian</button>
+                               <button ng-click="toswitchTranslation(6)" onclick="changeStyle(this.id)" id="to6" class="butns">Norwegian</button>
+                                <button ng-click="toswitchTranslation(7)" onclick="changeStyle(this.id)" id="to7" class="butns">Tigrigna</button>
+                                <button ng-click="toswitchTranslation(8)" onclick="changeStyle(this.id)" id="to8" class="butns">Swedish</button>
+                                <button ng-click="toswitchTranslation(9)" onclick="changeStyle(this.id)" id="to9" class="butns">Arabic</button>
+                                <button ng-click="toswitchTranslation(10)" onclick="changeStyle(this.id)" id="to10" class="butns">Israel</button>
                             </div>
                             <label></label>
                                      <table class="table tableclass">
@@ -93,8 +93,8 @@
                                         </tbody>
                                     </table>
                           </div>
-             </div> 
-          </div>      
+             </div>
+          </div>
           <footer>
               <div id="footer-text">
                 <div class="users">
@@ -110,12 +110,12 @@
                 </div>
               </div>
          </footer>
-       
+
 </body>
      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
         <script type="text/javascript" src="/controller/autocomplete.js"></script>
         <script type="text/javascript" src="/controller/controller.js"></script>
-  
+
    <!--  <script type="text/javascript">var switchTo5x=true;</script>
     <script type="text/javascript">stLight.options({publisher: "b3a1c4c9-8c92-49b8-89af-93373273de26", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script> -->
 </html>
